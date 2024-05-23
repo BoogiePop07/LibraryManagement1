@@ -1,5 +1,3 @@
-<!-- resources/views/auth/login.blade.php -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,13 +45,31 @@
             font-size: 12px; 
             color: #555; 
         }
+        .alert {
+            padding: 10px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <div class="header">{{ __('Login') }}</div> 
+            <div class="header">{{ __('Login') }}</div>
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 

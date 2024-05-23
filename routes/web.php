@@ -9,6 +9,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\addBookController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,10 +41,17 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 //sidebar route
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/book/search', [BookController::class, 'search'])->name('book.search');
-Route::get('/book/return', [BookController::class, 'return'])->name('book.return');
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 Route::get('/history', [HistoryController::class, 'index'])->name('history');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/admin/add',[addBookController::class,'viewAdd']);
 Route::post('/admin/add',[addBookController::class,'addBook'])->name('admin.add');
+
+Route::get('/book/borrowed', [BookController::class, 'viewBorrowed'])->name('book.borrowed');
+Route::post('/book/return/{id}', [BookController::class, 'returnBook'])->name('book.return');
+
+Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
+Route::post('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
