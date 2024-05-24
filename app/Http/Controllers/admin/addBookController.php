@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class addBookController extends Controller
 {
     public function viewAdd(){
-        return view ('admin.admin');
+        return view ('admin.addbook');
     }
     public function addBook(Request $request){
 
@@ -24,10 +24,11 @@ class addBookController extends Controller
             'created_at' => now(),
             'cost'=> $request ->input('cost'), 
         ]);
-       /* if ($inserted) {
-            return redirect('/homepage');->route('home.view')->with('success', 'Adoption application submitted successfully!');
-        } else {
-            return redirect('/register');
-        }*/
+       // Assuming you want to redirect after adding the book
+       if ($inserted) {
+        return redirect()->route('admin.addbook')->with('success', 'Book added successfully!');
+    } else {
+        return redirect()->back()->with('error', 'Failed to add book');
+    }
     }
 }

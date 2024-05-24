@@ -48,9 +48,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //admin side
 Route::get('/admin/add',[addBookController::class,'viewAdd']);
-Route::post('/admin/add',[addBookController::class,'addBook'])->name('admin.add');
-
-
+Route::post('/admin/add',[addBookController::class,'addBook'])->name('admin.addbook');
 
 
 Route::get('/book/borrowed', [BookController::class, 'viewBorrowed'])->name('book.borrow');
@@ -67,3 +65,8 @@ Route::get('/book/search', [BookController::class, 'search'])->name('book.search
 
 Route::post('/book/borrow/{id}', [BorrowController::class, 'borrow'])->name('book.borrow');
 
+// Apply auth middleware to protect these routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile/edit', [ProfileController::class, 'editProfile'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
+});
