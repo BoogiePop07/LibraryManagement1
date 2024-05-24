@@ -1,4 +1,5 @@
 @extends ('layouts.navbar')
+
 @section('content')
 
 <!DOCTYPE html>
@@ -54,7 +55,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-Money fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" class="form-control" name ="cost" placeholder="Cost"/>
+                      <input type="text" id="form3Example4c" class="form-control" name ="cost" placeholder="Cost"/>
                       <label class="form-label" for="form3Example4c"></label>
                     </div>
                   </div>

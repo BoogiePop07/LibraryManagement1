@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class addBookController extends Controller
 {
     public function viewAdd(){
-        return view ('login.admin');
+        return view ('admin.admin');
     }
     public function addBook(Request $request){
 

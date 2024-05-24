@@ -93,29 +93,34 @@
     <form method="POST" action="{{ route('profile.update') }}">
         @csrf
 
-        <!-- First Name -->
-        <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" value="{{ $user->first_name }}" required>
-        </div>
+        @if($user)
+            <!-- First Name -->
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" value="{{ $user->first_name }}" required>
+            </div>
 
-        <!-- Last Name -->
-        <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" value="{{ $user->last_name }}" required>
-        </div>
+            <!-- Last Name -->
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" value="{{ $user->last_name }}" required>
+            </div>
 
-        <!-- Email -->
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="{{ $user->email }}" required>
-        </div>
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ $user->email }}" required>
+            </div>
 
-        <!-- Address -->
-        <div class="form-group">
-            <label for="address">Address</label>
-            <textarea id="address" name="address">{{ $user->address }}</textarea>
-        </div>
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address">{{ $user->address }}</textarea>
+            </div>
+        @else
+            <p>User not found.</p>
+        @endif
+
 
         <button type="submit">Update Profile</button>
     </form>
